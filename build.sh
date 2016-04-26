@@ -27,7 +27,7 @@ if [ ! -e ${SRC_DIR}/${SOURCE_FILE}.lock ] && [ ! -s ${SRC_DIR}/${SOURCE_FILE} ]
   echo "seems like this is the first build - let's geet the source"
 # The usual :   wget http://[url]/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
 # is not going to work, because this guy decided to get smart :-/
-  wget www.csie.ntu.edu.tw/~cjlin/cgi-bin/libsvm.cgi?+http://www.csie.ntu.edu.tw/~cjlin/libsvm+tar.gz -O ${SRC_DIR}/${SOURCE_FILE}
+  wget https://www.csie.ntu.edu.tw/~cjlin/libsvm/oldfiles/${SOURCE_FILE} -O ${SRC_DIR}/${SOURCE_FILE}
   echo "releasing lock"
   rm -v ${SRC_DIR}/${SOURCE_FILE}.lock
 elif [ -e ${SRC_DIR}/${SOURCE_FILE}.lock ] ; then
