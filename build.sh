@@ -40,7 +40,9 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
+
 cd ${WORKSPACE}/${NAME}-${VERSION}
+
 make -j 2
 
 # Make the python bindings
