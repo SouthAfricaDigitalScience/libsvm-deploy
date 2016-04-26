@@ -1,5 +1,8 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
+# The stuff that has to be built is : 
+BINARIES='svm-train svm-predict svm-scale'
+PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/checkdata.py tools/easy.py'
 
 module add ci
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
@@ -45,5 +48,3 @@ make -j 2
 
 cd python
 make
-
-cp ${WORKSPACE}/check.py
