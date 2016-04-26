@@ -1,4 +1,4 @@
-# libsvm-deploy
+# libsvm-deploy [![Build Status](http://ci.sagrid.ac.za/buildStatus/icon?job=libsvm-deploy)](http://ci.sagrid.ac.za/job/libsvm-deploy/)
 
 Build scripts and tests for the LibSVM library :
 
@@ -6,4 +6,4 @@ C.-C. Chang and C.-J. Lin. LIBSVM : a library for support vector machines. ACM T
 
 Available from https://www.csie.ntu.edu.tw/~cjlin/libsvm/
 
-No add-ons are built. 
+No add-ons are built.
