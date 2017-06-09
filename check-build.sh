@@ -1,7 +1,8 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 module load ci
-module add  python/2.7.13
+module  add gcc/${GCC_VERSION}
+module add python/2.7.13-gcc-${GCC_VERSION}
 # The stuff that has to be built is :
 BINARIES='svm-train svm-predict svm-scale'
 PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/checkdata.py tools/easy.py'
@@ -43,13 +44,18 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       LIBSVM_VERSION       $VERSION
-setenv       LIBSVM_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       LIBSVM_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$::env(NAME)/$::(VERSION)-gcc-${GCC_VERSION}
 prepend-path LD_LIBRARY_PATH   $::env(LIBSVM_DIR)/lib
 prepend-path PATH              $::env(LIBSVM_DIR)/bin
 prepend-path CFLAGS            "-I${LIBSVM_DIR}/include"
 prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
-) > modules/$VERSION
+) > modules/$VERSION-gcc-${GCC_VERSION}
 
 mkdir -p ${LIBRARIES}/${NAME}
-cp modules/$VERSION ${LIBRARIES}/${NAME}
+cp modules/$VERSION-gcc${GCC_VERSION} ${LIBRARIES}/${NAME}
+module avail ${NAME}
+module add ${NAME}/${VERSION}-gcc-${VERSION}
+for binary in ${BINARIES} ; do
+  which $binary
+done

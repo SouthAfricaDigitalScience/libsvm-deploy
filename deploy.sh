@@ -7,7 +7,8 @@ PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/che
 
 echo ${SOFT_DIR}
 module add deploy
-module add python/2.7.13
+module  add gcc/${GCC_VERSION}
+module add python/2.7.13-gcc-${GCC_VERSION}
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
@@ -56,11 +57,17 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/LIBSVM-deploy"
 setenv LIBSVM_VERSION       $VERSION
-setenv LIBSVM_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv LIBSVM_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$::env(NAME)/$:env(VERSION)-gcc-$::env(GCC_VERSION)
 prepend-path LD_LIBRARY_PATH   $::env(LIBSVM_DIR)/lib
 prepend-path PATH              $::env(LIBSVM_DIR)/bin
 prepend-path GCC_INCLUDE_DIR   $::env(LIBSVM_DIR)/include
 prepend-path CFLAGS            "-I${LIBSVM_DIR}/include"
 prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
-) > ${LIBRARIES}/${NAME}/${VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
+
+module avail ${NAME}
+module add ${NAME}/${VERSION}-gcc-${VERSION}
+for binary in ${BINARIES} ; do
+  which $binary
+done
