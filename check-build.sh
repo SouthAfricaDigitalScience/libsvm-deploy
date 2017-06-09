@@ -1,6 +1,7 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 module load ci
+module add  python/2.7.13
 # The stuff that has to be built is :
 BINARIES='svm-train svm-predict svm-scale'
 PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/checkdata.py tools/easy.py'
@@ -50,5 +51,5 @@ prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
 ) > modules/$VERSION
 
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
-cp modules/$VERSION ${LIBRARIES_MODULES}/${NAME}
+mkdir -p ${LIBRARIES}/${NAME}
+cp modules/$VERSION ${LIBRARIES}/${NAME}

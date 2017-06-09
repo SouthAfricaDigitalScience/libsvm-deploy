@@ -7,12 +7,13 @@ PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/che
 
 echo ${SOFT_DIR}
 module add deploy
+module add python/2.7.13
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
 echo "All tests have passed, will now clean and build into ${SOFT_DIR}"
 make clean
-make -j2
+make
 echo "Making the python bindings"
 
 cd python
@@ -41,8 +42,8 @@ for py in $PYTHONS ; do
   cp -rv $py ${SOFT_DIR}
 done
 
-echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+echo "Creating the modules file directory ${LIBRARIES}"
+mkdir -p ${LIBRARIES}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -62,4 +63,4 @@ prepend-path GCC_INCLUDE_DIR   $::env(LIBSVM_DIR)/include
 prepend-path CFLAGS            "-I${LIBSVM_DIR}/include"
 prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}

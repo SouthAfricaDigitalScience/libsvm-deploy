@@ -5,6 +5,7 @@ BINARIES='svm-train svm-predict svm-scale'
 PYTHONS='python/svmutil.py python/svm.py tools/subset.py tools/grid.py tools/checkdata.py tools/easy.py'
 
 module add ci
+module add python/2.7.13
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 
 echo "REPO_DIR is "
