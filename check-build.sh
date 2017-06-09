@@ -30,8 +30,8 @@ done
 echo "They python stuff still needs to be added to $PYTHONHOME or $PYTHONPATH - that will come later."
 echo "It's also not clear whether we need the svm header if folks want to compile against that."
 
-mkdir -p ${REPO_DIR}
-mkdir -p modules
+mkdir -vp ${REPO_DIR}
+mkdir -vp modules
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -50,10 +50,12 @@ prepend-path PATH              $::env(LIBSVM_DIR)/bin
 prepend-path CFLAGS            "-I${LIBSVM_DIR}/include"
 prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
-) > modules/$VERSION-gcc-${GCC_VERSION}
+) > modules/${VERSION}-gcc-${GCC_VERSION}
 
-mkdir -p ${LIBRARIES}/${NAME}
-cp modules/$VERSION-gcc${GCC_VERSION} ${LIBRARIES}/${NAME}
+echo "making ${LIBARIES}/${NAME}"
+mkdir -vp ${LIBRARIES}/${NAME}
+echo "copying into ${LIBRARIES}/${NAME}"
+cp -v modules/${VERSION}-gcc${GCC_VERSION} ${LIBRARIES}/${NAME}
 module avail ${NAME}
 module add ${NAME}/${VERSION}-gcc-${VERSION}
 for binary in ${BINARIES} ; do
