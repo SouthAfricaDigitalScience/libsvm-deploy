@@ -52,10 +52,10 @@ prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
 MODULE_FILE
 ) > modules/${VERSION}-gcc-${GCC_VERSION}
 
-echo "making ${LIBARIES}/${NAME}"
+echo "making ${LIBRARIES}/${NAME}"
 mkdir -vp ${LIBRARIES}/${NAME}
 echo "copying into ${LIBRARIES}/${NAME}"
-cp -v modules/${VERSION}-gcc${GCC_VERSION} ${LIBRARIES}/${NAME}
+cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${LIBRARIES}/${NAME}
 module avail ${NAME}
 module add ${NAME}/${VERSION}-gcc-${VERSION}
 for binary in ${BINARIES} ; do
