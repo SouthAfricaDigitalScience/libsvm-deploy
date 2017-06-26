@@ -57,7 +57,7 @@ mkdir -vp ${LIBRARIES}/${NAME}
 echo "copying into ${LIBRARIES}/${NAME}"
 cp -v modules/${VERSION}-gcc-${GCC_VERSION} ${LIBRARIES}/${NAME}
 module avail ${NAME}
-module add ${NAME}/${VERSION}-gcc-${VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
 for binary in ${BINARIES} ; do
   which $binary
 done
