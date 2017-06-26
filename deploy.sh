@@ -30,17 +30,17 @@ mkdir -vp ${SOFT_DIR}/bin \
 
 echo "putting binaries $BINARIES in ${SOFT_DIR}/bin "
 for bin in $BINARIES ; do
-  cp -v ${bin} ${SOFT_DIR}/bin
+  cp -v ${bin} ${SOFT_DIR}-gcc-${GCC_VERSION}/bin
 done
 
 echo "putting binaries in ${SOFT_DIR}/bin"
-cp -v svm-predict svm-scale svm-train ${SOFT_DIR}/bin
+cp -v svm-predict svm-scale svm-train ${SOFT_DIR}-gcc-${GCC_VERSION}/bin
 echo "putting libraries in ${SOFT_DIR}/lib"
-cp -v libsvm.so.2 ${SOFT_DIR}/lib
+cp -v libsvm.so.2 ${SOFT_DIR}-gcc-${GCC_VERSION}/lib
 
 echo "putting in the pythons"
 for py in $PYTHONS ; do
-  cp -rv $py ${SOFT_DIR}
+  cp -rv $py ${SOFT_DIR}-gcc-${GCC_VERSION}
 done
 
 echo "Creating the modules file directory ${LIBRARIES}"

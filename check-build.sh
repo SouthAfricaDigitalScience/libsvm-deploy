@@ -19,12 +19,14 @@ mkdir -vp ${SOFT_DIR}/bin \
 # there is no make install - we need to push stuff there by hand
 echo "putting binaries $BINARIES in ${SOFT_DIR}/bin "
 for bin in $BINARIES ; do
-  cp -v ${bin} ${SOFT_DIR}/bin
+  cp -v ${bin} ${SOFT_DIR}-gcc-${GCC_VERSION}/bin
 done
+echo "putting libraries in ${SOFT_DIR}/lib"
+cp -v libsvm.so.2 ${SOFT_DIR}-gcc-${GCC_VERSION}/lib
 
 echo "putting in the pythons"
 for py in $PYTHONS ; do
-  cp -rv $py ${SOFT_DIR}
+  cp -rv $py ${SOFT_DIR}-gcc-${GCC_VERSION}
 done
 
 echo "They python stuff still needs to be added to $PYTHONHOME or $PYTHONPATH - that will come later."
