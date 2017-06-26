@@ -68,6 +68,8 @@ MODULE_FILE
 
 module avail ${NAME}
 module add ${NAME}/${VERSION}-gcc-${VERSION}
+echo "binaries are ${BINARIES}"
 for binary in ${BINARIES} ; do
-  which $binary
+  echo "checking $binary"
+  which ${binary}
 done
