@@ -44,11 +44,11 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       LIBSVM_VERSION       $VERSION
-setenv       LIBSVM_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$::env(NAME)/$::(VERSION)-gcc-${GCC_VERSION}
+setenv       LIBSVM_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$::env(NAME)/$::env(VERSION)-gcc-$::env(GCC_VERSION)
 prepend-path LD_LIBRARY_PATH   $::env(LIBSVM_DIR)/lib
 prepend-path PATH              $::env(LIBSVM_DIR)/bin
-prepend-path CFLAGS            "-I${LIBSVM_DIR}/include"
-prepend-path LDFLAGS           "-L${LIBSVM_DIR}/lib"
+prepend-path CFLAGS            "-I$::env(LIBSVM_DIR)/include"
+prepend-path LDFLAGS           "-L$::env(LIBSVM_DIR)/lib"
 MODULE_FILE
 ) > modules/${VERSION}-gcc-${GCC_VERSION}
 
