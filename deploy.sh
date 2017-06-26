@@ -67,7 +67,7 @@ MODULE_FILE
 ) > ${LIBRARIES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}
 
 module avail ${NAME}
-module add ${NAME}/${VERSION}-gcc-${VERSION}
+module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}
 echo "binaries are ${BINARIES}"
 for binary in ${BINARIES} ; do
   echo "checking $binary"
