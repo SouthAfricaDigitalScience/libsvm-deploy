@@ -11,11 +11,11 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/
 # there is no make check.
 
 echo $?
-mkdir -vp ${SOFT_DIR}/bin \
-          ${SOFT_DIR}/include  \
-          ${SOFT_DIR}/lib \
-          ${SOFT_DIR}/tools \
-          ${SOFT_DIR}/python
+mkdir -vp ${SOFT_DIR}-gcc-${GCC_VERSION}/bin \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/include  \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/lib \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/tools \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/python
 # there is no make install - we need to push stuff there by hand
 echo "putting binaries $BINARIES in ${SOFT_DIR}/bin "
 for bin in $BINARIES ; do

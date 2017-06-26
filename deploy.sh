@@ -22,11 +22,11 @@ make
 
 cd ${WORKSPACE}/${NAME}-${VERSION}
 
-mkdir -vp ${SOFT_DIR}/bin \
-          ${SOFT_DIR}/include  \
-          ${SOFT_DIR}/lib \
-          ${SOFT_DIR}/tools \
-          ${SOFT_DIR}/python
+mkdir -vp ${SOFT_DIR}-gcc-${GCC_VERSION}/bin \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/include  \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/lib \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/tools \
+          ${SOFT_DIR}-gcc-${GCC_VERSION}/python
 
 echo "putting binaries $BINARIES in ${SOFT_DIR}/bin "
 for bin in $BINARIES ; do
